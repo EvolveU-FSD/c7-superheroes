@@ -1,7 +1,7 @@
 const mongoose = require('./mongooseDb')
 
 const Superhero = mongoose.model('Superhero', {
-    superheroName: String,
+    superheroName: { type: String, unique:true },
     alterEgo: String,
     homeCity: String,
     costume: String,
@@ -33,10 +33,16 @@ async function deleteSuperhero(id) {
     return Superhero.findByIdAndDelete(id)
 }
 
+// never call this in production!
+async function deleteAll() {
+    return Superhero.deleteMany({})
+}
+
 module.exports = {
     createSuperhero,
     listSuperheros,
     findById,
     update,
     deleteSuperhero,
+    deleteAll
 }
