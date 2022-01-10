@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from "react-router-dom"
+import AuthenticationContext from '../AuthenticationContext'
 
 const LoginPage = () => {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [loginError, setLoginError] = useState("")
-
+    const authContext = useContext(AuthenticationContext)
     const navigate = useNavigate()
 
     function tryLogin() {
@@ -23,7 +24,8 @@ const LoginPage = () => {
                 body: JSON.stringify(loginInfo)
             })
             if (loginResult.ok) {
-                alert('Hello: '+username)
+                alert('Hello: ' + username)
+                authContext.logIn(username)
                 setLoginError('')
                 navigate('/')
             }

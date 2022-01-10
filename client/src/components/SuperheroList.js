@@ -1,5 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
+
+const ColoredBackground = ({ children, color }) => {
+    console.log(children)
+    return <div style={{ background: color, padding: '5px' }}>{children}</div>
+}
+
+const StyledButton = ({ children, color, ...rest }) => {
+    return <button {...rest} style={{background:color}}>{children}</button>
+}
 const SuperheroRow = ({
     name,
     alterEgo,
@@ -12,7 +21,14 @@ const SuperheroRow = ({
         <td>{alterEgo}</td>
         <td>{homeCity}</td>
         <td>
-            <button className="btn-sm btn-danger" onClick={() => deleteSuperhero()}>Delete</button>
+            <ColoredBackground color="green">
+                <StyledButton color="yellow"
+                   
+                    onClick={() => deleteSuperhero()}
+                >
+                    Delete
+                </StyledButton>
+            </ColoredBackground>
         </td>
     </tr>
 )
