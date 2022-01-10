@@ -6,4 +6,3 @@ superheroList.forEach(async (hero) => {
     let createdId = await superheroModel.createSuperhero(hero)
     console.log('... created with id', createdId)
 })
-

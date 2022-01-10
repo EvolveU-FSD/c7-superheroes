@@ -9,7 +9,6 @@ import './App.css'
 import SuperheroEditPage from './pages/SuperheroEditPage'
 import AuthenticationProvider from './AuthenticationProvider'
 import Nav from './components/Nav'
-import MustBeLoggedIn from './components/MustBeLoggedIn'
 import PrivatePage from './components/PrivatePage'
 
 function App() {

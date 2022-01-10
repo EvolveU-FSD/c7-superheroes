@@ -2,7 +2,7 @@ const mongoose = require('./mongooseDb')
 
 const User = mongoose.model('User', {
     username: String,
-    password: String
+    password: String,
 })
 
 async function createUser(userData) {
@@ -23,11 +23,10 @@ async function findById(id) {
     let fullUserRecord = await User.findById(id)
     let userToReturn = {
         id: fullUserRecord.id,
-        username: fullUserRecord.username
+        username: fullUserRecord.username,
     }
     return userToReturn
 }
-
 
 async function deleteUser(id) {
     return User.findByIdAndDelete(id)
@@ -38,5 +37,5 @@ module.exports = {
     listUsers,
     findById,
     deleteUser,
-    findUserByUsername
+    findUserByUsername,
 }

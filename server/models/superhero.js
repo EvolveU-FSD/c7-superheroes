@@ -1,7 +1,7 @@
 const mongoose = require('./mongooseDb')
 
 const Superhero = mongoose.model('Superhero', {
-    superheroName: { type: String, unique:true },
+    superheroName: { type: String, unique: true },
     alterEgo: String,
     homeCity: String,
     costume: String,
@@ -44,5 +44,5 @@ module.exports = {
     findById,
     update,
     deleteSuperhero,
-    deleteAll
+    deleteAll,
 }
