@@ -9,6 +9,8 @@ import './App.css'
 import SuperheroEditPage from './pages/SuperheroEditPage'
 import AuthenticationProvider from './AuthenticationProvider'
 import Nav from './components/Nav'
+import MustBeLoggedIn from './components/MustBeLoggedIn'
+import PrivatePage from './components/PrivatePage'
 
 function App() {
     return (
@@ -18,14 +20,27 @@ function App() {
                 <Routes>
                     <Route path="/" element={<SuperheroListPage />} />
                     <Route path="/login" element={<LoginPage />} />
-                    <Route path="/new" element={<CreateSuperheroPage />} />
+
+                    <Route
+                        path="/new"
+                        element={
+                            <PrivatePage>
+                                <CreateSuperheroPage />
+                            </PrivatePage>
+                        }
+                    />
+
                     <Route
                         path="/superhero/:id"
                         element={<SuperheroDetailPage />}
                     />
                     <Route
                         path="/superhero/:id/edit"
-                        element={<SuperheroEditPage />}
+                        element={
+                            <PrivatePage>
+                                <SuperheroEditPage />
+                            </PrivatePage>
+                        }
                     />
                 </Routes>
             </div>

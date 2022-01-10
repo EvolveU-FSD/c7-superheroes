@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AuthenticationContext from './AuthenticationContext'
 
 const AuthenticationProvider = ({ children }) => {
@@ -9,6 +9,17 @@ const AuthenticationProvider = ({ children }) => {
     const logOut = () => {
         setUsername('')
     }
+    useEffect(() => {
+        const getLoggedInUser = async () => {
+            const response = await fetch('/auth/loggedInUser')
+            const loggedInUser = await response.json()
+            if (loggedInUser) {
+                logIn(loggedInUser.username)
+            }
+        }
+        getLoggedInUser()
+    }, [])
+
     const authContext = { username, logIn, logOut }
     return (
         <AuthenticationContext.Provider value={authContext}>

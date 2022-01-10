@@ -16,6 +16,14 @@ const Nav = () => {
                     New
                 </Link>
             </MustBeLoggedIn>
+            {!authContext.username && (
+                <Link className="btn btn-primary" to="/login">
+                    Login
+                </Link>
+            )}
+            <MustBeLoggedIn>
+                <button className='btn btn-primary' onClick={authContext.logOut}>Logout</button>
+            </MustBeLoggedIn>
         </nav>
     )
 }

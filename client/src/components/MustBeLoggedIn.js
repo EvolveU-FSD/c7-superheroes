@@ -1,7 +1,8 @@
 import { useContext } from 'react'
 import AuthenticationContext from '../AuthenticationContext'
 
-const MustBeLoggedIn = ({ children }) => {
+const MustBeLoggedIn = (props) => {
+    const { children } = props
     const authContext = useContext(AuthenticationContext)
     return authContext.username ? children : null
 }
