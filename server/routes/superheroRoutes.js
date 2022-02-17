@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const superheroModel = require('../models/superhero')
+const superheroModel = require('../models/superheroSQL')
 
 const mustBeLoggedIn = async (req, res, next) => {
     if (req.user) {
