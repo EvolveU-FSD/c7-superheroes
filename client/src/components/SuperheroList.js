@@ -1,5 +1,19 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
+import MustBeLoggedIn from './MustBeLoggedIn'
+
+const ColoredBackground = ({ children, color }) => {
+    console.log(children)
+    return <div style={{ background: color, padding: '5px' }}>{children}</div>
+}
+
+const StyledButton = ({ children, color, ...rest }) => {
+    return (
+        <button {...rest} style={{ background: color }}>
+            {children}
+        </button>
+    )
+}
 const SuperheroRow = ({
     name,
     alterEgo,
@@ -11,9 +25,18 @@ const SuperheroRow = ({
         <td onClick={() => onSuperheroSelected()}>{name}</td>
         <td>{alterEgo}</td>
         <td>{homeCity}</td>
-        <td>
-            <button className="btn-sm btn-danger" onClick={() => deleteSuperhero()}>Delete</button>
-        </td>
+        <MustBeLoggedIn>
+            <td>
+                <ColoredBackground color="green">
+                    <StyledButton
+                        color="yellow"
+                        onClick={() => deleteSuperhero()}
+                    >
+                        Delete
+                    </StyledButton>
+                </ColoredBackground>
+            </td>
+        </MustBeLoggedIn>
     </tr>
 )
 

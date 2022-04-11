@@ -34,3 +34,15 @@ Your server will now be running on port 5000.  It will serve the latest build of
 
 Note that there is a proxy defined in the client/package.json to redirect API calls to your server, so you MUST be running your server when working in development mode.
 
+
+### Staging Environment
+
+Lives at https://superheroes-staging.herokuapp.com/
+
+To push changes to staging environment, push to release branch
+
+### Production ###
+
+Lives at https://superheroesregistry.herokuapp.com/
+
+Promote from staging on Heroku

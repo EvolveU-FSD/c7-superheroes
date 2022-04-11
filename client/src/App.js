@@ -1,32 +1,49 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import SuperheroListPage from './pages/SuperheroListPage'
 import CreateSuperheroPage from './pages/CreateSuperheroPage'
 import SuperheroDetailPage from './pages/SuperheroDetailPage'
+import LoginPage from './pages/LoginPage'
 
 import './App.css'
 import SuperheroEditPage from './pages/SuperheroEditPage'
+import AuthenticationProvider from './AuthenticationProvider'
+import Nav from './components/Nav'
+import PrivatePage from './components/PrivatePage'
 
 function App() {
     return (
-        <div className="App">
-            <nav className="nav">
-                <Link className="btn btn-primary" to="/">Home</Link>
-                <Link className= "btn btn-primary" to="/new">New</Link>
-            </nav>
-            <Routes>
-                <Route path="/" element={<SuperheroListPage />} />
-                <Route path="/new" element={<CreateSuperheroPage />} />
-                <Route
-                    path="/superhero/:id"
-                    element={<SuperheroDetailPage />}
-                />
-                <Route
-                    path="/superhero/:id/edit"
-                    element={<SuperheroEditPage />}
-                />
-            </Routes>
-        </div>
+        <AuthenticationProvider>
+            <div className="App">
+                <Nav />
+                <Routes>
+                    <Route path="/" element={<SuperheroListPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+
+                    <Route
+                        path="/new"
+                        element={
+                            <PrivatePage>
+                                <CreateSuperheroPage />
+                            </PrivatePage>
+                        }
+                    />
+
+                    <Route
+                        path="/superhero/:id"
+                        element={<SuperheroDetailPage />}
+                    />
+                    <Route
+                        path="/superhero/:id/edit"
+                        element={
+                            <PrivatePage>
+                                <SuperheroEditPage />
+                            </PrivatePage>
+                        }
+                    />
+                </Routes>
+            </div>
+        </AuthenticationProvider>
     )
 }
 

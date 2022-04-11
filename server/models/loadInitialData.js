@@ -3,7 +3,11 @@ let superheroModel = require('./superhero')
 
 superheroList.forEach(async (hero) => {
     console.log('Creating superhero:', hero.superheroName)
-    let createdId = await superheroModel.createSuperhero(hero)
-    console.log('... created with id', createdId)
+    try {
+        let createdId = await superheroModel.createSuperhero(hero)
+        console.log('... created with id', createdId)
+    } catch (err) {
+        console.log('Error creating superhero:', hero.superheroName)
+        console.log(err.message)
+    }
 })
-
