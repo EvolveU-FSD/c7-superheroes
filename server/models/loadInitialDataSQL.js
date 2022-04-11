@@ -1,4 +1,8 @@
-const { createSuperheroTable, createSuperhero, listSuperheros } = require('./superheroSQL')
+const {
+  createSuperheroTable,
+  createSuperhero,
+  listSuperheros,
+} = require('./superheroSQL')
 let superheroList = require('./superheroList.json')
 
 const initialize = async () => {

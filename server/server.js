@@ -19,8 +19,8 @@ app.use('/auth', authRoutes)
 
 app.use('/', express.static('../client/build'))
 app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
 })
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`)
 })
