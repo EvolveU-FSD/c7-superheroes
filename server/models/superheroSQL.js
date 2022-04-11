@@ -50,7 +50,9 @@ async function listSuperheros() {
 }
 
 async function findById(id) {
-  let superhero = await db.get(`SELECT *, id as _id from superhero WHERE id=${id}`)
+  let superhero = await db.get(
+    `SELECT *, id as _id from superhero WHERE id=${id}`
+  )
   superhero.superpowers = JSON.parse(superhero.superpowers)
   return superhero
 }
