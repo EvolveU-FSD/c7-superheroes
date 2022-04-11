@@ -5,7 +5,7 @@ const passport = require('passport')
 const path = require('path')
 const superheroRoutes = require('./routes/superheroRoutes')
 const authRoutes = require('./routes/auth')
-
+const cors = require('cors')
 const app = express()
 const port = process.env.PORT || 5000
 
@@ -13,7 +13,7 @@ app.use(session({ secret: 'cats' }))
 app.use(express.json())
 app.use(passport.initialize())
 app.use(passport.session())
-
+app.use(cors())
 app.use('/api', superheroRoutes)
 app.use('/auth', authRoutes)
 
