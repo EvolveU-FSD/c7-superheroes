@@ -116,14 +116,9 @@ const SuperheroEditForm = ({ existingValues, onSave }) => {
                     onChange={(event) => onInputUpdate(event, setNemesis)}
                 />
             </div>
-<<<<<<< HEAD
-            <button className="btn btn-primary" onClick={postData} >Save Superhero</button>
-
-=======
             <button className="btn btn-primary" onClick={postData}>
                 Save Superhero
             </button>
->>>>>>> main
         </div>
     )
 }
